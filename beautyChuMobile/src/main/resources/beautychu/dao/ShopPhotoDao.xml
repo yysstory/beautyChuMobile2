@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="beautychu.dao.ShopPhotoDao">
+
+	<resultMap type="ShopPhoto" id="shopPhotoMap">
+		<id column="SHOPPHOTONO" property="shopPhotoNumber" />
+		<result column="SHOPPHOTOURL" property="shopPhotoUrl" />
+		<result column="EMAIL" property="email" />
+	</resultMap>
+
+	<select id="getShopPhotoList" parameterType="map" resultMap="shopPhotoMap">
+		SELECT
+		SHOPPHOTONO,SHOPNO,SHOPPHOTOURL
+		FROM SHOPPHOTO
+		WHERE
+		SHOPNO=#{value}
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

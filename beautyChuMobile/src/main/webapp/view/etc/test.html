@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>AJAX 코딩</title>
+
+<link rel="stylesheet" href="../css/icon.css" />
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/idangerous.swiper.css" />
+
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+<script type="text/javascript" src="../js/idangerous.swiper.js"></script>
+<script type="text/javascript" src='../js/main.js'></script>
+
+<style type="text/css">
+.imageSlideDiv {
+	width: 300px;
+	height: 300px;
+}
+</style>
+</head>
+
+<body>
+	<h2>7 : rolling, flexible, resize</h2>
+	<div id="touchSlider7">
+		<ul>
+			<li>content 1<br /> content 1<br /> content 1<br /> content 1<br />
+				content 1<br /> content 1<br /> content 1<br /> content 1<br />
+				content 1<br /> content 1<br />
+			</li>
+			<li style="background: #396">content 2<br /> content 2<br />
+				content 2<br /> content 2<br /> content 2<br />
+			</li>
+			<li style="background: #39C">content 3<br /> content 3<br />
+				content 3<br /> content 3<br /> content 3<br /> content 3<br />
+				content 3<br /> content 3<br /> content 3<br /> content 3<br />
+				content 3<br /> content 3<br /> content 3<br />
+			</li>
+			<li style="background: #33C">content 4<br /> content 4<br />
+				content 4<br /> content 4<br /> content 4<br /> content 4<br />
+				content 4<br />
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		$(function() {
+			$("#touchSlider7").touchSlider(
+					{
+						flexible : true,
+						counter : function( ) {
+							var h = $("#touchSlider7 ul li").eq(e.current - 1)
+									.height();
+							$("#touchSlider7").css({
+								"height" : h + "px"
+							});
+						}
+					});
+
+		})
+	</script>
+
+</body>
+</html>

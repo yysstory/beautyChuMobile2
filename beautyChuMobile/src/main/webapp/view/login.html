@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>jQuery Mobile Basic</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" href="../css/icon.css" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<style type="text/css">
+</style>
+
+
+
+</head>
+<body>
+	<div data-role="page" id="login">
+
+		<div data-role="header">
+				<a href="option.html" rel="external" title="Go back">Back</a>
+		
+			<h1>BeautyChu~♥</h1>
+		</div>
+
+		<div data-role="content">
+
+
+			<label>&nbsp;</label>
+
+			<form id="frmLogin" class="validate">
+				<div data-role="fieldcontain">
+					<label for="email"><em>* </em> 이메일: </label> <input type="text"
+						id="email" name="email" class="required email" />
+				</div>
+
+				<div data-role="fieldcontain">
+					<label for="password"><em>* </em>비밀번호: </label> <input
+						type="password" id="password" name="password" class="required" />
+				</div>
+
+				<label>&nbsp;</label>
+
+				<button class="btnLogin" type="submit" data-theme="a">로그인</button>
+
+			</form>
+
+		</div>
+
+	</div>
+
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script
+		src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+
+
+
+
+	<script>
+		console.log(location.href);
+
+		/* 		$(function() {
+
+		 var url = location.href;
+		 var styleNo = url.split("=");
+
+		 $.getJSON('../json/style/styledetail.do?styleNo='
+		 + styleNo[styleNo.length - 1], function(data) {
+		 var source = $('#styletemplate').html();
+		 var template = Handlebars.compile(source);
+		 var html = template(data);
+		 $('#styledetail').append(html).trigger('create');
+
+		 });
+
+		 }) */
+	</script>
+
+</body>
+</html>

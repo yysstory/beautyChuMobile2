@@ -1,0 +1,190 @@
+@CHARSET "UTF-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+* {
+	font-family: "Nanum Gothic", sans-serif;
+	/* 	border: 1px solid red;*/
+}
+
+/* 가장 큰 내용 css */
+#content-div {
+	padding: 0px;
+	background-color: lightgray;
+}
+/* 두개의 섹션 */
+.content-section {
+	width: 47%;
+	float: left;
+	margin-left: 2%;
+}
+/* 각 스타일 div 내용 */
+.style-content {
+	margin-top: 5%;
+	margin-bottom: 2%;
+	border: 1px solid lightgray;
+	background-color: white;
+	border-radius: 3%;
+	overflow: hidden;
+}
+/* 스타일 이미지 내용 */
+.style-content img {
+	width: 100%;
+}
+
+button {
+	margin: 2%;
+}
+
+.adddiv {
+	height: 500px;
+}
+/* 제목 내용 */
+.div-section-1 {
+	margin-top: 1.5%;
+	margin-bottom: 1.5%;
+	padding-left: 4%;
+	padding-right: 4%;
+}
+
+.div-section-2 {
+	border-top: 1px solid lightgray;
+}
+
+.div-section-2 div {
+	text-align: center;
+	font-weight: bold;
+	font-size: 90%;
+}
+
+.div-section-2 count-font {
+	
+}
+
+.div-title {
+	font-weight: bold;
+	font-size: 80%;
+}
+
+.div-content {
+	font-size: 70%;
+}
+
+.div-writer {
+	text-align: right;
+	font-size: 60%;
+}
+
+/* 여기부터 스타일 디테일 클레스 */
+.imageSlideDiv {
+	margin: 0 auto;
+	height: 300px;
+	margin-bottom: 5%;
+}
+
+.imageSlideDiv img {
+	height: 100%;
+}
+
+.stylePrice{
+	float : right;
+	
+	/* text-align: right; */
+}
+
+.styleInfoDiv {
+	width: 100%;
+	font-size: 80%;
+	margin-bottom: 10%;
+	margin-top: 10%;
+}
+
+.styleInfoTitle {
+	font-size: 90%;
+	font-weight: bold;
+}
+
+.styleInfoContent {
+	font-size: 80%;
+}
+
+.couponDiv {
+	clear: both;
+	margin-top: 5%;
+	margin-bottom: 10%;
+	width: 100%;
+	height: 40px;
+	background-color: #d1d1d1;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 30px;
+}
+
+.shopInfoDiv {
+	height: 80px;
+	width: 100%;
+	margin-bottom: 10%;
+	overflow: hidden;
+}
+
+.shopInfoDiv img {
+	width: 80px;
+	height: 80px;
+	float: left;
+}
+
+.shopInfoContent {
+	font-size: 80%;
+}
+
+.shopInfoName {
+	font-weight: bold;
+	font-size: 90%;
+}
+
+.commentDiv {
+	border: 2px solid lightgray;
+	border-radius: 5px;
+}
+
+.commentOne {
+	margin-top: 5%;
+	height: 55px;
+	overflow: hidden;
+}
+
+.commentDiv img {
+	clear: both;
+	border-radius: 100px;
+	width: 50px;
+	height: 50px;
+	float: left;
+}
+
+.commentName {
+	font-weight: bold;
+	font-size: 90%;
+}
+
+.commentContent {
+	font-size: 80%;
+}
+
+/* 스와이퍼 css */
+.swiper-slide img {
+	height: 100%;
+	 display: table;
+	margin: 0 auto;
+	
+}
+
+.swiper-slide{
+	height: 300px;
+	width: 300px;
+
+}
+
+.swiper-container {
+	height: 300px;
+	width: 300px;
+}

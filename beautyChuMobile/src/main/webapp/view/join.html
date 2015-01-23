@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>jQuery Mobile Basic</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" href="../css/icon.css" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<style type="text/css">
+</style>
+
+
+
+</head>
+<body>
+	<div data-role="page">
+		<div data-role="header" data-theme="a">
+				<a href="option.html" rel="external" title="Go back">Back</a>
+		
+			<h1>BeautyChu~♥</h1>
+		</div>
+		<!-- /header -->
+		<div role="main" class="ui-content">
+
+
+
+		<label >&nbsp;</label> 
+
+				<label for="txt-email">Email을 입력해주세요</label> 
+				<input type="text" name="txt-email" id="txt-email" value=""> 
+				<label for="txt-last-name">닉네임 정해주세요</label> 
+				<input type="text" name="txt-last-name" id="txt-last-name" value=""> 
+				<label for="txt-password">비밀번호</label> 
+				<input type="password" name="txt-password" id="txt-password" value=""> 
+				<label for="txt-password-confirm">비밀번호 다시 한번!</label> 
+				<input type="password" name="txt-password-confirm" id="txt-password-confirm" value="">
+			<!--	<a href="#dlg-sign-up-sent" id="btn-submit" class="ui-btn ui-btn-a ui-corner-all">회원가입</a> -->
+					<label >&nbsp;</label> 
+			
+        <a href="#dlg-sign-up-sent" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-btn-a ui-corner-all mc-top-margin-1-5">완료!</a>
+				 
+				 
+				<div data-role="popup" id="dlg-sign-up-sent" data-dismissible="false"	style="max-width: 400px;">
+				<div data-role="header">
+					<h1>축하합니다</h1>
+				</div>
+				<div role="main" class="ui-content">
+					<h3>회원가입이 거의 끝났습니다. :)</h3>
+					<p>거의 모든 기능을 사용할 수 있습니다. 저희가 보내드린 이메일을 확인해주시면 댓글달기와 예약기능까지 사용 하실 수 있습니다. </p>
+					<div class="mc-text-center">
+						<a href="main.html" class="ui-btn ui-corner-all ui-shadow ui-btn-a mc-top-margin-1-5">OK</a>
+					</div>
+				</div>
+			</div> 
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- /page -->
+
+
+
+
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+
+
+
+
+	<script>
+		console.log(location.href);
+
+		/* 		$(function() {
+
+		 var url = location.href;
+		 var styleNo = url.split("=");
+
+		 $.getJSON('../json/style/styledetail.do?styleNo='
+		 + styleNo[styleNo.length - 1], function(data) {
+		 var source = $('#styletemplate').html();
+		 var template = Handlebars.compile(source);
+		 var html = template(data);
+		 $('#styledetail').append(html).trigger('create');
+
+		 });
+
+		 }) */
+	</script>
+
+</body>
+</html>

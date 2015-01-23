@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1">
+<title>main</title>
+<link rel="stylesheet" href="../css/idangerous.swiper.css">
+<style type="text/css">
+body {
+	background-color: gray;
+}
+
+#div1 {
+	background-color: aqua;
+	height: 800px;
+}
+
+#div2 {
+	background-color: blue;
+	height: 1200px;
+}
+
+#div3 {
+	background-color: fuchsia;
+	height: 100px;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-wrapper {
+	
+}
+
+.swiper-slide {
+	width: 100%;
+}
+</style>
+</head>
+<body>
+
+
+
+	<div></div>
+
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<!--First Slide-->
+			<div class="swiper-slide" id=div1>111111111111111</div>
+
+			<!--Second Slide-->
+			<div class="swiper-slide" id=div2>22222222222222222</div>
+
+			<!--Third Slide-->
+			<div class="swiper-slide" id=div3>33333333333333333</div>
+		</div>
+	</div>
+
+
+
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/idangerous.swiper-2.0.min.js"></script>
+	<script src="../js/idangerous.swiper.scrollbar-2.0.js"></script>
+
+
+	<script type="text/javascript">
+		$(function() {
+			var mySwiper = $('.swiper-container').swiper({
+				//Your options here:
+				mode : 'horizontal',
+				loop : false,
+				freeModeFluid : true,
+
+			//etc..
+			});
+		})
+
+		function fixPagesHeight() {
+			$('.swiper-pages').css({
+				height : $(window).height() - nav.height
+			})
+		}
+		$(window).on('resize', function() {
+			fixPagesHeight()
+		})
+		fixPagesHeight()
+	</script>
+</body>
+</html>

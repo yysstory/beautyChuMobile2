@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- int reviewNumber; int styleNumber; String email; String reviewContent; 
+	int reviewStar; String reportDate; String reviewerName; -->
+
+<mapper namespace="beautychu.dao.ReviewDao">
+	<resultMap type="Review" id="reviewMap">
+		<id column="REVIEWNO" property="reviewNumber" />
+		<result column="STYLENO" property="styleNumber" />
+		<result column="EMAIL" property="email" />
+		<result column="CONTENT" property="reviewContent" />
+		<result column="STAR" property="reviewStar" />
+		<result column="REPORTDATE" property="reportDate" />
+		<result column="NAME" property="reviewerName" />
+	</resultMap>
+
+	<select id="reviewList" parameterType="map" resultMap="reviewMap">
+		SELECT T1.REVIEWNO, T1.STYLENO, T1.EMAIL, T1.CONTENT, T1.STAR, T1.REPORTDATE, T2.NAME
+		from REVIEW T1
+		LEFT JOIN MEMBER T2
+		ON T1.EMAIL=T2.EMAIL
+		WHERE T1.STYLENO=#{styleNumber};
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	String email;
+	String licenseNumber;
+	String shopName;
+	String shopAddress;
+	String shopPhoneNumber;
+	String shopIntro;
+	String shopMainImage;
+
+ -->
+
+<mapper namespace="beautychu.dao.ShopDao">
+
+	<resultMap type="Shop" id="shopMap">
+		<id column="EMAIL" property="email" />
+		<result column="LICENSEENO" property="licenseNumber" />
+		<result column="SHOPNAME" property="shopName" />
+		<result column="SHOPADDR" property="shopAddress" />
+		<result column="SHOPTEL" property="shopPhoneNumber" />
+		<result column="SHOPINTRO" property="shopIntro" />
+		<result column="SHOPPHOTOURL" property="shopMainImage" />
+	</resultMap>
+
+<!-- 	<select id="getList" parameterType="map" resultMap="styleMap">
+		SELECT
+		s.STYLENO,s.PEOPLE,s.GENDER,s.STYLELENGTH,s.STYLENAME,s.STYLEINTRO,s.PRICE,s.EMAIL,
+		sp.STYLEPHOTOURL
+		FROM STYLE s
+		LEFT JOIN (SELECT STYLEPHOTONO,STYLENO,STYLEPHOTOURL from STYLEPHOTO GROUP
+		BY STYLENO) sp
+		ON sp.STYLENO = s.STYLENO
+		limit #{startIndex}, #{pageSize}
+	</select> -->
+
+	<select id="getShop" parameterType="int" resultMap="shopMap" resultType="Shop">
+		SELECT S2.EMAIL,S2.LICENSEENO,S2.SHOPNAME,S2.SHOPADDR,S2.SHOPTEL,S2.SHOPINTRO,S3.SHOPPHOTOURL
+		FROM STYLE S1
+		LEFT JOIN SHOP S2
+		ON S1.EMAIL = S2.EMAIL
+		LEFT JOIN SHOPPHOTO S3
+		ON S2.EMAIL = S3.EMAIL
+		WHERE S1.STYLENO = #{value}
+		LIMIT 1
+	</select>
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
