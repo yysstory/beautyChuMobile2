@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<style type="text/css">
+* {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	border: 1px black solid;
+}
+
+#slider {
+	width: 1920px;
+	height: 720px;
+	overflow: hidden;
+}
+
+#slider .slides {
+	display: block;
+	width: 6000px;
+	height: 720px;
+	margin: 0;
+	padding: 0;
+}
+
+#slider .slide {
+	float: left;
+	list-style-type: none;
+	width: 1920px;
+	height: 720px;
+}
+
+li img {
+	height: 200px;
+	width: 300px;
+	background-color: gray;
+}
+</style>
+</head>
+<body>
+
+	<div id="slider">
+		<ul class="slides">
+			<li class="slide">1<img src="../img/main1.jpg" /></li>
+			<li class="slide">2<img src="../img/main2.jpg" /></li>
+			<li class="slide">3<img src="../img/main3.jpg" /></li>
+		</ul>
+	</div>
+
+
+
+
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			var width = 1920;
+			var animationSpeed = 1000;
+			var pause = 3000;
+			var currentSlide = 0;
+
+			var $slider = $("#slider");
+			var $slideContainer = $slider.find(".slides");
+			var $slides = $slideContainer.find(".slide");
+
+			setInterval(function() {
+				$slideContainer.animate({
+					"margin-left" : '-=' + width
+				}, animationSpeed, function() {
+					currentSlide++;
+					if (currentSlide === $slides.length) {
+						currentSlide = 0;
+						$slideContainer.css('margin-left', 0);
+					}
+				});
+			}, pause);
+		});
+	</script>
+
+
+
+</body>
+</html>

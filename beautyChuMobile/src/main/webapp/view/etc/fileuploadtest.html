@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Spring MVC - Upload File</title>
+<link href="http://hayageek.github.io/jQuery-Upload-File/uploadfile.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+
+<div id="fileuploader">Upload</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://hayageek.github.io/jQuery-Upload-File/jquery.uploadfile.min.js"></script>
+<!-- <script src="../js/jquery.MultiFile.js"></script>
+ -->
+
+	<script>
+	
+		$(function() {
+			
+/* 			$("#btn").click(function() {
+				var form = $('form');
+				var formData = new FormData(form);
+				
+				$.ajax({
+					url : '/beautyChuMobile/json/uploadFile.do',
+					data : formData,
+          enctype: 'multipart/form-data',
+					processData : false,
+					contentType : false,
+					type : 'POST',
+					success : function(data) {
+						alert("EE");
+					}
+				});
+
+			}); */
+			
+			$("#fileuploader").uploadFile({
+				url:"/beautyChuMobile/json/uploadFile.do",
+				multiple:true,
+				fileName:"myfile"
+				});
+			
+		});
+	</script>
+</body>
+</html>
+
