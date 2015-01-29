@@ -69,10 +69,6 @@ button {
 	font-size: 90%;
 }
 
-.div-section-2 count-font {
-	
-}
-
 .div-title {
 	font-weight: bold;
 	font-size: 80%;
@@ -91,7 +87,6 @@ button {
 
 </head>
 <body>
-
 	<script id="styletemplate" type="text/temp">
 <div class=style-content id={{styleNumber}}>
 	<a href="styledetail.html?styleNo={{styleNumber}}" rel="external"><img src={{mainPhoto}}></a>
@@ -106,12 +101,9 @@ button {
 				<i class="red heart icon"></i>
 			</div>
 			<div class=count-font>{{chuCount}}</div>
-
 		</div>
 		<div class='div-chu-count ui-block-b' id=div-chu>
-
-
-<div>
+  <div>
 				<i class="write icon"></i>
 			</div>
 			<div class=count-font>{{commentCount}}</div>
@@ -121,13 +113,6 @@ button {
 
 
 	<!-- 1페이지 -->
-<!-- 
-  {{#if }}
-				<i class="red heart icon"></i>
-
-  {{else}}
-			
-  {{/if}} -->
 
 	<div data-role="page" class="page">
 		<div data-role="header" style="overflow: hidden" data-position="fixed">
@@ -136,11 +121,10 @@ button {
 				
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#" data-transition="slide"
-						class="ui-btn-active ui-state-persist">HOT</a></li>
+					<li><a href="#" data-transition="slide"	class="ui-btn-active ui-state-persist">HOT</a></li>
 					<li><a href="#">WOMEN</a></li>
 					<li><a href="#">MAN</a></li>
-					<li><a href="styledetail.html?styleNo=4" rel="external" >SHOP</a></li>
+					<li><a href="#" rel="external" >SHOP</a></li>
 					<li><a id=style-detail>MyChu</a></li>
 				</ul>
 			</div>
@@ -150,17 +134,13 @@ button {
 		<div data-role="content" id=content-div>
 			<div id=content-section-1 class=content-section></div>
 			<div id=content-section-2 class=content-section>
-
-				<label for="select-choice-a" class="select"></label> <select
-					name="select-choice-a" id="select-choice-a"
-					data-native-menu="false">
+				<label for="select-choice-a" class="select"></label> 
+				<select	name="select-choice-a" id="select-choice-a"	data-native-menu="false">
 					<option value="최신순">최신순</option>
 					<option value="인기순">인기순</option>
 				</select>
 			</div>
-
 		</div>
-
 	</div>
 
 	<!-- 	<div data-role="footer">
