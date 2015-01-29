@@ -62,6 +62,7 @@ public class StyleControl {
 		resultMap.put("stylePhotoList", stylePhotoService.getStylePhotoList(styleNo));
 		resultMap.put("shop", shopService.getShop(styleNo));
 		resultMap.put("myChuCount", styleService.getChuCount(styleNo));
+		resultMap.put("review",styleService.sytleReviewList(styleNo));
 		return resultMap;
 	}
 }

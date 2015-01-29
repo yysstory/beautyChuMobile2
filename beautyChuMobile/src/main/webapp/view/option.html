@@ -7,28 +7,49 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="../css/icon.css" />
+
 <link rel="stylesheet"
 	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <style type="text/css">
 </style>
+
+
+
+<script id="my-info-template" type="text/temp">
+			<li>
+				<a href="#"><img src="../fileupload/1.png"  />
+					<h3>{{name}}</h3>
+					<p>{{email}}</p>
+				</a>
+			</li>
+</script>
+
+
+
 
 </head>
 <body>
 
 	<!-- 옵션 페이지 -->
 	<div data-role="page" id=optionpage data-add-back-btn="true">
-		<div data-role="header" data-position="fixed">
+		<div data-role="header" data-position="fixed" id=option-header>
 			<a href="main.html" rel="external" title="Go back">Back</a>
-
 			<h1>BeautyChu~♥</h1>
 		</div>
+
+		<ul id=my-info-list data-role="listview" data-icon="false">
+		</ul>
+
+
+
 		<div data-role="content">
 			<ul data-role="listview">
 				<li><a href="#page1">공지사항</a></li>
-				<li><a href="#page2">알림</a></li>
-				<li><a href="#page3">로그인/로그아웃</a></li>
-				<li><a href="#page4">비밀번호 변경</a></li>
-				<li><a href="#page5">회원가입</a></li>
+				<li id=list-my-coupon><a href="#page2">내 쿠폰보기</a></li>
+				<li id=list-login><a href="#page3">로그인</a></li>
+				<li id=list-logout><a href="#">로그아웃</a></li>
+				<li id=list-change-password><a href="#page4">내정보 변경</a></li>
+				<li id=list-join><a href="#page5">회원가입</a></li>
 				<li><a href="#page6">문의하기</a></li>
 				<li><a href="#page7">앱정보</a></li>
 			</ul>
@@ -48,7 +69,7 @@
 		</div>
 	</div>
 
-	<!-- 두 번째 페이지 -->
+	<!-- 두 번째 페이지  -->
 	<div data-role="page" id="page2" data-add-back-btn="true">
 		<div data-role="header">
 			<a href="option.html" title="Go back">Back</a>
@@ -70,29 +91,20 @@
 		</div>
 
 		<div data-role="content">
-
-
 			<label>&nbsp;</label>
-
-			<form id="frmLogin" class="validate">
-				<div data-role="fieldcontain">
-					<label for="email"><em>* </em> 이메일: </label> <input type="text"
-						id="email" name="email" class="required email" />
-				</div>
-
-				<div data-role="fieldcontain">
-					<label for="password"><em>* </em>비밀번호: </label> <input
-						type="password" id="password" name="password" class="required" />
-				</div>
-
-				<label>&nbsp;</label>
-
-				<button class="btnLogin" type="submit" data-theme="a">로그인</button>
-
-			</form>
-
+			<div data-role="fieldcontain">
+				<label for="email"><em>* </em> 이메일: </label> <input type="text"
+					id="login-email" name="email" class="required email" />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="password"><em>* </em>비밀번호: </label> <input
+					type="password" id="login-password" name="password"
+					class="required" />
+			</div>
+			<label id=login-noti>&nbsp;</label>
+			<!-- 				<button id=login-btn class="btnLogin" type="submit" data-theme="a">로그인</button>
+ -->
 		</div>
-
 	</div>
 
 
@@ -104,29 +116,25 @@
 			<h1>비밀번호 변경</h1>
 		</div>
 		<div data-role="content">
-		
-		
-<label >&nbsp;</label> 
-	<div data-role="fieldcontain">
-	<label><em>* </em> 현재 비밀번호: </label> 
-	<input type="text" id="nowpassword" />
-	</div>	
-		
-<!-- 	<label for="text-basic">현재 비밀번호</label> 
+
+
+			<label>&nbsp;</label> <label for="text-basic">현재 비밀번호: </label> <input
+				type="text" name="text-basic" id="now-password" value="">
+
+
+			<!-- 	<label for="text-basic">현재 비밀번호</label> 
 	<input type="text" name="text-basic" id="text-basic" value="">  -->
 
 
-<label >&nbsp;</label> 
+			<label>&nbsp;</label> <label for="text-basic">변경할 비밀번호</label> <input
+				type="text" name="text-basic" id="change-password1" value="">
 
-	<label for="text-basic">변경할 비밀번호</label> 
-	<input type="text" name="text-basic" id="text-basic" value=""> 
-	
-	<label for="text-basic">비밀번호 확인</label> 
-	<input type="text" name="text-basic" id="text-basic" value=""> 
-	<label >&nbsp;</label> 
-	<button id=changepasswordbtn type="submit" data-theme="a">변경</button>
-		
-		
+			<label for="text-basic">비밀번호 확인</label> <input type="text"
+				name="text-basic" id="change-password2" value=""> <label id=>&nbsp;</label>
+			<button id=changepasswordbtn type="submit" data-theme="a">비밀번호
+				변경</button>
+
+
 		</div>
 	</div>
 
@@ -141,25 +149,19 @@
 		</div>
 		<!-- /header -->
 		<div role="main" class="ui-content">
-
-
-
 			<label>&nbsp;</label> <label for="txt-email">Email을 입력해주세요</label> <input
-				type="text" name="txt-email" id="txt-email" value=""> <label
+				type="text" name="txt-email" id="join-email" value=""> <label
 				for="txt-last-name">닉네임 정해주세요</label> <input type="text"
-				name="txt-last-name" id="txt-last-name" value=""> <label
+				name="txt-last-name" id="join-name" value=""> <label
 				for="txt-password">비밀번호</label> <input type="password"
-				name="txt-password" id="txt-password" value=""> <label
+				name="txt-password" id="join-password" value=""> <label
 				for="txt-password-confirm">비밀번호 다시 한번!</label> <input
 				type="password" name="txt-password-confirm"
-				id="txt-password-confirm" value="">
-			<label>&nbsp;</label> <a href="#dlg-sign-up-sent" data-rel="popup"
-				data-transition="pop" data-position-to="window" id="btn-submit"
-				class="ui-btn ui-btn-a ui-corner-all mc-top-margin-1-5">완료!</a>
-
-
-			<div data-role="popup" id="dlg-sign-up-sent" data-dismissible="false"
-				style="max-width: 400px;">
+				id="join-password-confirm" value=""> <label id=check-noti>&nbsp;</label>
+			<a href="#dlg-sign-up-sent" data-rel="popup" data-transition="pop"
+				data-position-to="window" id="join-submit"
+				class="ui-state-disabled ui-btn ui-btn-a ui-corner-all mc-top-margin-1-5">완료!</a>
+			<div data-role="popup" id="dlg-sign-up-sent" data-dismissible="false"		style="max-width: 400px;">
 				<div data-role="header">
 					<h1>축하합니다</h1>
 				</div>
@@ -168,8 +170,8 @@
 					<p>거의 모든 기능을 사용할 수 있습니다. 저희가 보내드린 이메일을 확인해주시면 댓글달기와 예약기능까지 사용
 						하실 수 있습니다.</p>
 					<div class="mc-text-center">
-						<a href="option.html"
-							class="ui-btn ui-corner-all ui-shadow ui-btn-a mc-top-margin-1-5">OK</a>
+						<a href="option.html" rel="external"
+							class="ui-btn ui-corner-all ui-shadow ui-btn-a mc-top-margin-1-5">확인</a>
 					</div>
 				</div>
 			</div>
@@ -187,17 +189,13 @@
 			<h1>문의하기</h1>
 		</div>
 		<div data-role="content">
-
 			<form id="questionform">
-
-				<label for="text-basic">회신받을 이메일 주소를 적어주세요!</label> 
-				<input type="text" name="text-basic" id="text-basic" value=""> 
-				<label for="text-basic">문의하실 내용을 입력해주세요</label>
+				<label for="text-basic">회신받을 이메일 주소를 적어주세요!</label> <input
+					type="text" name="text-basic" id="text-basic" value=""> <label
+					for="text-basic">문의하실 내용을 입력해주세요</label>
 				<textarea cols="30" rows="20" name="textarea" id="textarea"></textarea>
 				<button id=questionbtn type="submit" data-theme="a">문의하기</button>
-
 			</form>
-
 		</div>
 	</div>
 
@@ -213,34 +211,269 @@
 		</div>
 	</div>
 
-
-
-	<script		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script		src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-
-
-
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script
+		src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="../js/handlebars-v2.0.0.js"></script>
 
 
 	<script>
-		console.log(location.href);
+		$(function() {
 
-		/* 		$(function() {
+			console.log(location.href);
 
-		 var url = location.href;
-		 var styleNo = url.split("=");
+			/******************************
+			로그인 세션 체크 코드
+			
+			1.세션에 담겨져있는 로그인 정보 여부에따라 LISTVIEW 구성 다르게 한다.
+			login 정보가 있을시 - 로그인 버튼 비활성화 로그아웃버튼 활성화 회원가입 비활성화
+			login 정보가 없을시 - 로그아웃 버튼 비활성화 로그인 버튼 활성화 회원가입 활성화
+			
+			
+			 ******************************/
 
-		 $.getJSON('../json/style/styledetail.do?styleNo='
-		 + styleNo[styleNo.length - 1], function(data) {
-		 var source = $('#styletemplate').html();
-		 var template = Handlebars.compile(source);
-		 var html = template(data);
-		 $('#styledetail').append(html).trigger('create');
+			$.ajax({
+				type : 'GET',
+				dataType : "json",
+				url : '../json/auth/loginUser.do',
+				success : function(data) {
+					if (data.status === 'success') {
+						console.log(data.loginUser);
+						$('#list-login').hide();
+						$('#list-logout').show();
+						$('#list-join').hide();
+						$('#list-change-password').show();
+						$('#list-my-coupon').show();
 
-		 });
+						var source = $('#my-info-template').html();
+						var template = Handlebars.compile(source);
+						var html = template(data.loginUser);
+						$('#my-info-list').html(html).listview("refresh");
 
-		 }) */
+					} else {
+						console.log('로그인 된 사람 없음');
+						$('#list-login').show();
+						$('#list-logout').hide();
+						$('#list-join').show();
+						$('#list-change-password').hide();
+						$('#list-my-coupon').hide();
+
+					}
+				},
+				error : function() {
+					console.log('로그회원 조회 ajax 실패');
+				}
+
+			});
+
+			/******************************
+				비밀번호 변경 스크립트 
+				
+			차후 개선	
+			
+			 ******************************/
+			/* 		
+			function changLoginCheck(){
+				
+				$.ajax({
+					type : 'GET',
+					dataType : "json",
+					url : '../json/auth/loginUser.do',
+					success : function(data) {
+						if (data.status==='success') {
+						    console.log(data.loginUser);
+
+
+						} else {
+								console.log('로그인 된 사람 없음');
+
+						}
+					},
+					error : function() {
+						console.log('로그회원 조회 ajax 실패');
+					}
+
+				});
+			}
+			 */
+
+			/******************************
+			로그인 체크 코드 
+			
+			1. 이메일 유효성 검사
+			2. 성공시 목록창 변경
+			
+			
+			 ******************************/
+
+			var loginemailcheck = 0;
+
+			/* 이메일 유효성 검사& 중복검사 */
+			$("#login-email")
+					.keyup(
+							function(data) {
+								var yunemail = $('#login-email').val();
+								var yunregex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+								if (yunregex.test(yunemail)) {
+									$('#login-noti').html(' ');
+									loginemailcheck = 1;
+								} else {
+									$('#login-noti').html("잘못된 이메일 형식입니다.")
+											.css("color", "red");
+									loginemailcheck = 0;
+								}
+							});
+
+			$("#login-password").keyup(
+					function(data) {
+						if (loginemailcheck === 1) {
+							$.ajax({
+								type : 'post',
+								dataType : "json",
+								url : '../json/auth/login.do',
+								data : {
+									'email' : $("#login-email").val(),
+									'password' : $("#login-password").val()
+								},
+								success : function(data) {
+									if (data.loginUser) {
+										$('#login-noti').html('로그인 성공').css(
+												"color", "blue");
+										location.href = 'option.html';
+
+									} else {
+										$('#login-noti').html(
+												'아이디 혹은 비밀번호가 맞지 않습니다.').css(
+												"color", "red");
+									}
+								},
+								error : function() {
+									console.log('로그인 ajax 실패');
+								}
+							});
+						}
+					})
+
+			/******************************
+			로그아웃 코드
+			
+			1. 세션에서 삭제.
+			 ******************************/
+			$('#list-logout').on('click', function() {
+
+				$.ajax({
+					dataType : "json",
+					url : '../json/auth/logout.do',
+					success : function() {
+						console.log('로그아웃 되었습니다.');
+						location.href = 'option.html';
+					},
+					error : function() {
+						console.log('로그아웃 ajax 실패 ');
+					}
+				});
+			});
+
+			/******************************
+			회원가입 체크 코드 
+			
+			1. 이메일 유효성 검사&중복검사
+			2. 비밀번호 일치 검사
+			
+			
+			 ******************************/
+			var joinpass = 0; // 0이면 통과x  1이면 통과
+			var passwordpass = 0;
+
+			/* 이메일 유효성 검사& 중복검사 */
+			$("#join-email")
+					.keyup(
+							function(data) {
+								var yunemail = $('#join-email').val();
+								var yunregex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+								if (yunregex.test(yunemail)) {
+									console.log('정상 진입');
+									$.get("http://192.168.0.128:55555/id", {
+										id : $('#join-email').val()
+									}, function(data) {
+										if (data.result === 'yes') {
+											$('#check-noti').html('사용가능한 아이디 입니다.').css("color", "blue");
+											joinpass = 1;
+										} else if (data.result === 'no') {
+											$('#check-noti').html('중복된 아이디가 있습니다.').css("color", "red");
+											joinpass = 0;
+										}
+									})
+								} else {
+									$('#check-noti').html("잘못된 이메일 형식입니다.")
+											.css("color", "red");
+									joinpass = 0;
+								}
+							});
+
+			function checkpassword() {
+				var password1 = $('#join-password').val();
+				var password2 = $('#join-password-confirm').val();
+				console.log(password1, password2);
+				if (password1 === null || password2 === null) {
+					$('#check-noti').html("비밀번호를 입력해주세요.").css("color", "red");
+					passwordpass = 0;
+				} else if (password1 === password2) {
+					$('#check-noti').html("패스워드가 일치 합니다.^^").css("color",
+							"blue");
+					passwordpass = 1;
+				} else {
+					$('#check-noti').html("패스워드가 일치하지 않습니다..").css("color",
+							"red");
+					passwordpass = 0;
+				}
+			}
+
+			$("#join-password").keyup(function(data) {
+				checkpassword();
+			});
+
+			$("#join-password-confirm").keyup(function(data) {
+				checkpassword();
+			});
+
+			/* 입력폼 검사  */
+
+			$("#join-email,#join-password,#join-password-confirm").keyup(
+					function(data) {
+						if (passwordpass === 1 && joinpass === 1) {
+							$('#join-submit').removeClass("ui-state-disabled");
+						} else {
+							$('#join-submit').removeClass("ui-state-disabled")
+									.addClass("ui-state-disabled");
+						}
+					});
+
+			$('#join-submit').on('click', function() {
+				$.ajax({
+					type : 'post',
+					dataType : "json",
+					url : '../json/auth/join.do',
+					data : {
+						email : $('#join-email').val(),
+						name : $('#join-name').val(),
+						password : $('#join-password').val()
+					},
+					success : function(data) {
+						$('#join-email').val('');
+						$('#join-name').val('');
+						$('#join-password').val('');
+						$('#join-password-confirm').val('');
+						$('#check-noti').html('&nbsp;');
+
+					},
+					error : function() {
+						console.log('회원가입 ajax 실패');
+					}
+				});
+			});
+		});
 	</script>
 </body>
 </html>

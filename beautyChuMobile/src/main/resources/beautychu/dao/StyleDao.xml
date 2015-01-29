@@ -3,11 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- int styleNumber; String people; String gender; String styleLength; String 
-	styleName; String styleIntro; int SkillTime; int price; String email; -->
-
 <mapper namespace="beautychu.dao.StyleDao">
 
+
+	
 	<resultMap type="Style" id="styleMap">
 		<id column="STYLENO" property="styleNumber" />
 		<result column="PEOPLE" property="people" />
@@ -17,11 +16,11 @@
 		<result column="STYLEINTRO" property="styleIntro" />
 		<result column="PRICE" property="price" />
 		<result column="EMAIL" property="email" />
+		<result column="COMMENTCOUNT" property="reviewCount" />
+		<result column="MYCHUCOUNT" property="myChuCount" />
 		<result column="STYLEPHOTOURL" property="mainPhoto" />
 	</resultMap>
-<!-- 	int myChuNo;
-	int styleNo;
-	String email; -->
+
 
 	<resultMap type="MyChu" id="myChuMap">
 		<id column="MYCHUNO" property="myChuNo" />
@@ -30,14 +29,30 @@
 	</resultMap>
 
 
+
+
+	<resultMap type="Review"  id="sytleReviewList">
+		<id column="REVIEWNO" property="reviewNumber" />
+		<result column="STYLENO" property="styleNumber" />
+		<result column="CONTENT" property="reviewContent" />
+		<result column="STAR" property="reviewStar" />
+		<result column="REPORTDATE" property="reportDate" />
+		<result column="EMAIL" property="email" />
+		<result column="NAME" property="reviewerName" />
+		<result column="PROFILEPHOTO" property="photoUrl" />
+	</resultMap>
+
+
+
 	<select id="getList" parameterType="map" resultMap="styleMap">
-		SELECT
-		s.STYLENO,s.PEOPLE,s.GENDER,s.STYLELENGTH,s.STYLENAME,s.STYLEINTRO,s.PRICE,s.EMAIL,
-		sp.STYLEPHOTOURL
+		SELECT s.STYLENO,s.PEOPLE,s.GENDER,s.STYLELENGTH,s.STYLENAME,s.STYLEINTRO,s.PRICE,s.EMAIL,sp.STYLEPHOTOURL,sr.COMMENTCOUNT,sc.MYCHUCOUNT
 		FROM STYLE s
-		LEFT JOIN (SELECT STYLEPHOTONO,STYLENO,STYLEPHOTOURL from STYLEPHOTO GROUP
-		BY STYLENO) sp
+		LEFT JOIN (SELECT STYLEPHOTONO,STYLENO,STYLEPHOTOURL from STYLEPHOTO GROUP	BY STYLENO) sp
 		ON sp.STYLENO = s.STYLENO
+		LEFT JOIN (SELECT COUNT(CONTENT) as COMMENTCOUNT , STYLENO FROM REVIEW GROUP BY STYLENO) sr
+		ON sp.STYLENO = sr.STYLENO
+		LEFT JOIN (SELECT COUNT(MYCHUNO) as MYCHUCOUNT ,STYLENO FROM MYCHU GROUP BY STYLENO) sc
+		ON sp.STYLENO = sc.STYLENO
 		limit #{startIndex}, #{pageSize}
 	</select>
 
@@ -64,6 +79,21 @@
 	</select>
 	
 	
+	<select id="getReviewCount" resultType="int" parameterType="int">
+		SELECT count(CONTENT) FROM REVIEW
+		WHERE STYLENO = #{value}
+	</select>
+	
+	
+	<select id="sytleReviewList" resultType="map" parameterType="int">
+		SELECT r.REVIEWNO, r.STYLENO, r.CONTENT, r.STAR, r.REPORTDATE, r.EMAIL, m.NAME ,c.PROFILEPHOTO
+		FROM REVIEW r
+		LEFT JOIN MEMBER  m
+		ON r.EMAIL=m.EMAIL
+		LEFT JOIN CUSTOMER c
+		ON r.EMAIL=c.EMAIL
+		WHERE r.STYLENO = #{value}
+	</select>
 </mapper>
 
 

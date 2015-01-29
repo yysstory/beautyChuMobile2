@@ -13,8 +13,14 @@ public class Review implements Serializable {
 	int reviewStar;
 	String reportDate;
 	String reviewerName;
+	String photoUrl;
 	
-	
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
 	public int getReviewNumber() {
 		return reviewNumber;
 	}

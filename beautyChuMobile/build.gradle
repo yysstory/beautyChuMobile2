@@ -38,6 +38,8 @@ dependencies {
   compile 'org.mybatis:mybatis:3.2.8'
   compile 'mysql:mysql-connector-java:5.1.34'
   compile 'org.reflections:reflections:0.9.9'
+compile  'commons-io:commons-io:2.4'
+  
   //testCompile 'junit:junit:4.+'
 }
 

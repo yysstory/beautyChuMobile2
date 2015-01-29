@@ -11,5 +11,6 @@ public interface StyleDao {
 	  Style getStyle(int styleNumber);
 	  int getChuCount(int no);
 	  int totalSize();
-
+	  int getReviewCount(int no);
+	  List<?> sytleReviewList(int StyleNumber);
 	}

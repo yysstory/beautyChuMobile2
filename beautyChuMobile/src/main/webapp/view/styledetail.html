@@ -7,6 +7,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="../css/icon.css" />
+
 <link rel="stylesheet" href="../css/idangerous.swiper.css" />
 
 <link rel="stylesheet"
@@ -27,6 +28,7 @@
 
 .stylePrice {
 	float: right;
+	margin-right: 5%;
 }
 
 .styleInfoDiv {
@@ -34,6 +36,7 @@
 	font-size: 80%;
 	margin-bottom: 10%;
 	margin-top: 10%;
+	margin-left: 1%;
 }
 
 .styleInfoTitle {
@@ -41,26 +44,11 @@
 	font-weight: bold;
 }
 
-.styleInfoContent {
-	font-size: 80%;
-}
 
-.couponDiv {
-	clear: both;
-	margin-top: 5%;
-	margin-bottom: 10%;
-	width: 100%;
-	height: 40px;
-	background-color: #d1d1d1;
-	border-radius: 5px;
-	text-align: center;
-	/* font-size: 30px; */
-}
 
 .shopInfoDiv {
 	height: 80px;
 	width: 100%;
-	margin-bottom: 10%;
 	overflow: hidden;
 }
 
@@ -68,6 +56,7 @@
 	width: 80px;
 	height: 80px;
 	float: left;
+	margin-right: 1%;
 }
 
 .shopInfoContent {
@@ -79,9 +68,23 @@
 	font-size: 90%;
 }
 
+.shopAddress {
+	font-size: 70%;
+	text-align: right;
+	margin-bottom: 10%;
+}
+
+.coupon-div{
+
+margin-bottom: 10%;
+
+}
+
+
 .commentDiv {
 	border: 2px solid lightgray;
 	border-radius: 5px;
+	padding: 3%;
 }
 
 .commentOne {
@@ -123,6 +126,10 @@
 	height: 300px;
 	width: 300px;
 }
+
+#styledetailcontent {
+	padding: 3%;
+}
 </style>
 
 
@@ -136,12 +143,10 @@
 		<a href="main.html" rel="external" title="Go back">Back</a>
 			<h1>{{style.styleName}}</h1>
 		</div>
-		<div data-role="content" style="background-color: #f0f0f0;">
+		<div data-role="content" style="background-color: #f0f0f0;" id=styledetailcontent>
 			<div class='imageSlideDiv'>
-
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
-					
 					{{#each stylePhotoList}}
 						<div class="swiper-slide">
 							<img src="{{stylePhoto}}">
@@ -149,17 +154,33 @@
 					{{/each}}
 					</div>
 				</div>
-
-
 			</div>
-			<div class='stylePrice'>{{style.price}}</div>
+			<div class='stylePrice'>{{style.price}}원</div>
 
 			<div class='styleInfoDiv'>
-				<!-- <div class='styleInfoTitle'>러블리펌</div> -->
-				<div class='styleInfoCotent'>{{style.styleIntro}}</div>
+				{{style.styleIntro}}
 			</div>
 
-			<button class=couponDiv>COUPON 10%</button>
+
+
+			<a href="#coupon-send" data-rel="popup" data-transition="pop"		data-position-to="window" id="join-submit"
+				class="ui-btn ui-btn-a ui-corner-all mc-top-margin-1-5 coupon-div">10% COUPON</a>
+			<div data-role="popup" id="coupon-send" data-dismissible="false"		style="max-width: 400px;">
+				<div data-role="header">
+					<h1>축하합니다</h1>
+				</div>
+				<div role="main" class="ui-content">
+					<h3>쿠폰이 발급되었습니다. :)</h3>
+					<p></p>
+					<div class="mc-text-center">
+						<a href="#" data-rel="back"	class="ui-btn ui-corner-all ui-shadow ui-btn-a mc-top-margin-1-5">확인</a>
+					</div>
+				</div>
+			</div>
+
+
+
+
 
 			<div class='shopInfoDiv'>
 				<div>
@@ -167,26 +188,23 @@
 				</div>
 				<div class='shopInfoName'>{{shop.shopName}}</div>
 				<div class='shopInfoContent'>{{shop.shopIntro}}</div>
-				<div class='shopAddress'>{{shop.shopAddress}}</div>
 
 			</div>
-
+				<div class='shopAddress'>{{shop.shopAddress}}</div>
+	  {{#if review}}
 			<div class='commentDiv'>
 				Comment
+			{{#each review}}
 				<div class='commentOne'>
 					<div>
-						<img src="../fileupload/5.png">
+						<img src="{{PROFILEPHOTO}}">
 					</div>
-					<div class='commentName'>윤용식</div>
-					<div class='commentContent'>정말 좋네요 ㅋㅋ</div>
+					<div class='commentName'>{{NAME}}</div>
+					<div class='commentContent'>{{CONTENT}}</div>
 				</div>
-				<div class='commentOne'>
-					<div>
-						<img src="../fileupload/6.png">
-					</div>
-					<div class='commentName'>김기현</div>
-					<div class='commentContent'>전 별로였어요 ㅠㅠ</div>
-				</div>
+			{{/each}}
+			{{/if}}
+
 			</div>
 		</div>
 
@@ -194,8 +212,9 @@
 		<div data-role="footer" style="overflow: hidden" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#">{{myChuCount}}</a></li>
-					<li><a href="#">Commnet</a></li>
+
+					<li class=chu-chose><a href="#"><i class="write heart icon"></i>{{myChuCount}}</i></a></li>
+					<li class=chu-comment><a href="#">Commnet</a></li>
 
 				</ul>
 			</div>
@@ -216,43 +235,45 @@
 
 
 
-	<script		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script		src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script
+		src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
 	<script type="text/javascript" src="../js/idangerous.swiper.js"></script>
 
 
 
 	<script>
-
 		$(function() {
 
 			var url = location.href;
 			var styleNo = url.split("=");
- 
-			$.getJSON('../json/style/styledetail.do?styleNo='+styleNo[styleNo.length - 1], function(data) {
-//			$.getJSON('../json/style/styledetail.do?styleNo=2', function(data) {
 
-				console.log('현 url ='+location.href);
+			$.getJSON('../json/style/styledetail.do?styleNo='
+					+ styleNo[styleNo.length - 1], function(data) {
+				//			$.getJSON('../json/style/styledetail.do?styleNo=2', function(data) {
+
+				console.log('현 url =' + location.href);
 				console.log(data);
-				
-				var template = Handlebars.compile($('#styledetailtemplate').html());
+
+				var template = Handlebars.compile($('#styledetailtemplate')
+						.html());
 				$('#styledetail').append(template(data)).trigger('create');
+
+				var mySwiper = new Swiper('.swiper-container', {
+					mode : 'horizontal',
+					loop : true,
+					grabCursor : true
+				})
+				$('#styledetail').css('min-height', 'initial');
+			});
+
+			$('.chu-chose').on('click', function() {
 
 			});
 
 		})
-
-		$(function() {
-			var mySwiper = new Swiper('.swiper-container', {
-				mode : 'horizontal',
-				loop : true,
-				grabCursor : true
-			})
-
-		})
-		
-
 	</script>
 
 </body>

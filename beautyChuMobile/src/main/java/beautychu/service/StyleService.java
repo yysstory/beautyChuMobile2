@@ -42,6 +42,14 @@ public class StyleService {
 		return styleDao.getChuCount(styleNumber);
 	}
 	
+	public int getReviewCount(int styleNumber){
+		return styleDao.getReviewCount(styleNumber);
+	}
+	
+	public List<?> sytleReviewList(int styleNumber){
+		return styleDao.sytleReviewList(styleNumber);
+	}
+	
 }
 
 

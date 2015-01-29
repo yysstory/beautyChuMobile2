@@ -8,6 +8,7 @@
 	content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="../css/icon.css" />
 <link rel="stylesheet" href="../css/main.css" />
+
 <link rel="stylesheet" href="../css/idangerous.swiper.css" />
 <link rel="stylesheet"	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <style type="text/css">
@@ -102,24 +103,31 @@ button {
 	<div class='div-section-2 ui-grid-a'>
 		<div class='div-coment ui-block-a i'>
 			<div>
-				<i class="write icon"></i>
-			</div>
-			<div class=count-font>12</div>
-
-		</div>
-		<div class='div-chu-count ui-block-b'>
-			<div>
 				<i class="red heart icon"></i>
 			</div>
-			<div class=count-font>12</div>
+			<div class=count-font>{{chuCount}}</div>
+
+		</div>
+		<div class='div-chu-count ui-block-b' id=div-chu>
+
+
+<div>
+				<i class="write icon"></i>
+			</div>
+			<div class=count-font>{{commentCount}}</div>
 		</div>
 	</div>
 </div></script>
 
 
 	<!-- 1페이지 -->
+<!-- 
+  {{#if }}
+				<i class="red heart icon"></i>
 
-
+  {{else}}
+			
+  {{/if}} -->
 
 	<div data-role="page" class="page">
 		<div data-role="header" style="overflow: hidden" data-position="fixed">
@@ -170,6 +178,46 @@ button {
 
 
 	<script>
+	
+	
+
+	/******************************
+	로그인 세션 체크 코드
+	
+	1.세션에 담겨져있는 로그인 정보 여부에따라 LISTVIEW 구성 다르게 한다.
+	login 정보가 있을시 - 로그인 버튼 비활성화 로그아웃버튼 활성화 회원가입 비활성화
+	login 정보가 없을시 - 로그아웃 버튼 비활성화 로그인 버튼 활성화 회원가입 활성화
+	
+	
+	 ******************************/
+
+	$.ajax({
+		type : 'GET',
+		dataType : "json",
+		url : '../json/auth/loginUser.do',
+		success : function(data) {
+			if (data.status === 'success') {
+				console.log(data.loginUser);
+				
+				
+			} else {
+				console.log('로그인 된 사람 없음');
+				$('#list-login').show();
+				$('#list-logout').hide();
+				$('#list-join').show();
+				$('#list-change-password').hide();
+			}
+		},
+		error : function() {
+			console.log('로그회원 조회 ajax 실패');
+		}
+
+	});
+
+	
+	
+	
+	
 		var currPageNo;
 		var maxPageNo;
 
@@ -238,6 +286,9 @@ button {
 			console.log('페이지 인잇');
 		})
 		
+		/* 
+		$("#div-chu").
+		 */
 
 	</script>
 

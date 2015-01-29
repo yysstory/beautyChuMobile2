@@ -35,11 +35,10 @@ public class AuthControl {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public Object login(String email, String password, boolean save,
-			String requestUrl, /* 세션에 저장된 값을 달라고 하려면? */
+	public Object login(String email, String password,String requestUrl, /* 세션에 저장된 값을 달라고 하려면? */
 			HttpServletResponse response, HttpSession session) throws Exception {
 
-		if (save) { // 쿠키로 아이디 저장
+/*		if (save) { // 쿠키로 아이디 저장
 			Cookie cookie = new Cookie("email", email);
 			cookie.setMaxAge(60 * 60 * 24 * 15);
 			response.addCookie(cookie);
@@ -47,7 +46,7 @@ public class AuthControl {
 			Cookie cookie = new Cookie("email", "");
 			cookie.setMaxAge(0); // 무효화시킴
 			response.addCookie(cookie);
-		}
+		}*/
 
 		Member member = memberService.validate(email, password);
 

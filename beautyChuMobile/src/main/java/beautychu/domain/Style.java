@@ -16,9 +16,22 @@ public class Style implements Serializable {
 	int price;
 	String email;
 	String mainPhoto;
+	int myChuCount;
+	int reviewCount;
 	
 	
-	
+	public int getChuCount() {
+		return myChuCount;
+	}
+	public void setChuCount(int chuCount) {
+		this.myChuCount = chuCount;
+	}
+	public int getCommentCount() {
+		return reviewCount;
+	}
+	public void setCommentCount(int commentCount) {
+		this.reviewCount = commentCount;
+	}
 	public int getStyleNumber() {
 		return styleNumber;
 	}
