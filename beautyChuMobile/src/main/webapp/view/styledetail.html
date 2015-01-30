@@ -4,18 +4,21 @@
 <meta charset="UTF-8">
 
 <title>jQuery Mobile Basic</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta name="viewport"	content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="../css/icon.css" />
-
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="../css/idangerous.swiper.css" />
 
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-
 <style type="text/css">
+@font-face {
+	font-family: 'Nanum Gothic Bold';
+	src: url('../font/NanumGothic-Bold.ttf');
+}
 
-/* 여기부터 스타일 디테일 클레스 */
+* {
+	font-family: "Nanum Gothic Bold", sans-serif;
+}
+
 .imageSlideDiv {
 	margin: 0 auto;
 	height: 300px;
@@ -43,8 +46,6 @@
 	font-size: 90%;
 	font-weight: bold;
 }
-
-
 
 .shopInfoDiv {
 	height: 80px;
@@ -74,12 +75,9 @@
 	margin-bottom: 10%;
 }
 
-.coupon-div{
-
-margin-bottom: 10%;
-
+.coupon-div {
+	margin-bottom: 10%;
 }
-
 
 .commentDiv {
 	border: 2px solid lightgray;
@@ -140,7 +138,7 @@ margin-bottom: 10%;
 	<script id="styledetailtemplate" type="text/temp">
 
 		<div data-role="header" style="overflow: hidden" data-position="fixed" data-add-back-btn="true">
-		<a href="main.html" rel="external" title="Go back">Back</a>
+		<a href="hot.html" rel="external" title="Go back">Back</a>
 			<h1>{{style.styleName}}</h1>
 		</div>
 		<div data-role="content" style="background-color: #f0f0f0;" id=styledetailcontent>
@@ -228,17 +226,8 @@ margin-bottom: 10%;
 	<div data-role="page" id="styledetail" class="page"></div>
 
 
-	<!-- 	<div data-role="footer">
-		<h1>footer</h1>
-	</div> -->
-	<!-- /footer -->
-
-
-
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script
-		src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.mobile-1.4.5.min.js"></script>
 	<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
 	<script type="text/javascript" src="../js/idangerous.swiper.js"></script>
 
@@ -250,7 +239,7 @@ margin-bottom: 10%;
 			var url = location.href;
 			var styleNo = url.split("=");
 
-			$.getJSON('../json/style/styledetail.do?styleNo='
+			$.getJSON('http://192.168.0.36:8080/beautyChuMobile/json/style/styledetail.do?styleNo='
 					+ styleNo[styleNo.length - 1], function(data) {
 				//			$.getJSON('../json/style/styledetail.do?styleNo=2', function(data) {
 

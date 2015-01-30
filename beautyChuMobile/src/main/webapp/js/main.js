@@ -7,7 +7,7 @@ $(function() {
 	$('#style-detail').on('click', function() {
 		console.log('클릭');
 		$.mobile.changePage('#styledetail', {
-			dataUrl : "styledetail?styleno=2",
+			dataUrl : "http://192.168.0.36:8080/beautyChuMobile/view/styledetail?styleno=2",
 			data : {
 				'styleno' : '2'
 			},
@@ -60,7 +60,7 @@ function loadStyleList(pageNo) {
 	if (pageNo <= 0)
 		pageNo = 1;
 
-	$.getJSON('../json/style/list.do?pageNo=' + pageNo, function(data) {
+	$.getJSON('http://192.168.0.36:8080/beautyChuMobile/json/style/list.do?pageNo=' + pageNo, function(data) {
 		console.log(data);
 		var styleList = data.styleList;
 		$('#styletemplate').load(
@@ -107,14 +107,13 @@ $(document).on(		"pageinit",		"#styledetail",
 				var url = location.href;
 				var styleNo = url.split("=");
 
-				$.getJSON('../json/style/styledetail.do?styleNo='+ styleNo[styleNo.length - 1], function(data) {
-					$('#styletemplate').load('../templates/styledetailtemplate.html',
+				$.getJSON('http://192.168.0.36:8080/beautyChuMobile/json/style/styledetail.do?styleNo='+ styleNo[styleNo.length - 1], function(data) {
+					$('#styletemplate').load('http://192.168.0.36:8080/beautyChuMobile/templates/styledetailtemplate.html',
 							function() {
 								var source = $('#styletemplate').html();
 								var template = Handlebars.compile(source);
 								var html = template(data);
 								$('#styledetail').append(html).trigger('create');
-
 					});
 				})
 			})

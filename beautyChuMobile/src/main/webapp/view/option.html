@@ -7,10 +7,19 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="../css/icon.css" />
-
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet"	href="../css/jquery.mobile-1.4.5.min.css" />
 <style type="text/css">
+
+
+@font-face {
+	font-family: 'Nanum Gothic Bold';
+	src: url('../font/NanumGothic-ExtraBold.ttf');
+}
+
+* {
+	font-family: "Nanum Gothic Bold", sans-serif;
+}
+
 </style>
 
 
@@ -33,7 +42,7 @@
 	<!-- 옵션 페이지 -->
 	<div data-role="page" id=optionpage data-add-back-btn="true">
 		<div data-role="header" data-position="fixed" id=option-header>
-			<a href="main.html" rel="external" title="Go back">Back</a>
+			<a href="hot.html" rel="external" title="Go back">Back</a>
 			<h1>BeautyChu~♥</h1>
 		</div>
 
@@ -364,7 +373,7 @@
 
 				$.ajax({
 					dataType : "json",
-					url : '../json/auth/logout.do',
+					url : 'http://192.168.0.36:8080/beautyChuMobile/json/auth/logout.do',
 					success : function() {
 						console.log('로그아웃 되었습니다.');
 						location.href = 'option.html';
@@ -454,7 +463,7 @@
 				$.ajax({
 					type : 'post',
 					dataType : "json",
-					url : '../json/auth/join.do',
+					url : 'http://192.168.0.36:8080/beautyChuMobile/json/auth/join.do',
 					data : {
 						email : $('#join-email').val(),
 						name : $('#join-name').val(),
