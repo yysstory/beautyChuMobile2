@@ -26,6 +26,9 @@
 	padding: 0px;
 	background-color: lightgray;
 }
+
+
+
 </style>
 
 
@@ -52,7 +55,7 @@
 		</div>
 		<!-- /header -->
 
-		<div data-role="content" id=content-div >
+		<div data-role="content" id="content-div" >
 
 
 		</div>
@@ -62,17 +65,17 @@
 	<script		src="../js/jquery-2.1.3.min.js"></script>
 	<script		src="../js/jquery.mobile-1.4.5.min.js"></script>
 	<script type="text/javascript"	src="//apis.daum.net/maps/maps3.js?apikey=d68325ce80aa99b09337e375aa77d969&libraries=services"></script>
-
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	
 	<script type="text/javascript">
+
 	
 	$(function(){
-	
-	
-		$( "#content-div" ).load( "http://192.168.0.36:8080/beautyChuMobile/view/mapdetail.html" );
+ 		$( "#content-div" ).load( "mapdetail.html");
+ 		
 
-		
-	})
-	
+	});	
+ 		
 	
 	
 	</script>
