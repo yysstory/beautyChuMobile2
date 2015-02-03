@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <title>내 주변 샵 검색</title>
+<link rel="stylesheet" href="../css/icon.css" />
+
 <style type="text/css">
+
+
 
 @font-face {
 	font-family: 'Nanum Gothic Bold';
@@ -31,7 +35,7 @@
 
 #menu_wrap {
 	position: fixed;
-	top: 280px;
+	top: 320px;
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -203,12 +207,12 @@
 }
 
 #geolocationbtn {
-	text-align: center;
-	float: left;
-	position: relative;
-	top: -199px;
-	z-index: 100;
-	right: -2px;
+text-align: center;
+float: left;
+position: relative;
+top: -191px;
+z-index: 100;
+right: -5px;
 }
 </style>
 </head>
@@ -227,7 +231,8 @@
 				<button id='searchbtn' type="submit">검색</button>
 			</form>
 		</div>
-		<button id='geolocationbtn'>내위치</button>
+		<i class="big map icon" id='geolocationbtn'></i>
+		<!-- <button id='geolocationbtn'>내위치</button> -->
 		<div id="menu_wrap" class="bg_white">
 
 			<ul id="placesList"></ul>
